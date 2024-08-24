@@ -22,7 +22,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f5f5f5;
+    background-color: var(--b300);
 }
 
 main {
@@ -314,12 +314,12 @@ input[type=number] {
 }
 
 .qr-header {
-    background-color: #333333;
+    background-color:  var(--b300);
     color: #f5f5f5;
 }
 
 .qr-footer {
-    background-color: #333333;
+    background-color:  var(--b300);
     color: #f5f5f5;
 }
 

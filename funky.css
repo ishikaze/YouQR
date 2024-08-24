@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family: Nunito;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
@@ -36,6 +37,11 @@ main {
     border: none;
     color: inherit;
     text-decoration: inherit;
+    border-radius: 16px;
+}
+
+select, input {
+    border-radius: 16px;
 }
 
 input[type="color"] {
@@ -114,6 +120,12 @@ input[type="text"], input[type="number"] {
     border: none;
     outline: none;
     transition: background-color 0.4s;
+    border-radius: 16px;
+    margin: 8px 0 0 0;
+}
+
+.accordion.active {
+    border-radius: 16px 16px 0 0 ;
 }
 
 .accordion:after {
@@ -129,6 +141,7 @@ input[type="text"], input[type="number"] {
 
 .accordion.accordion--open {
     cursor: auto;
+    border-radius: 16px 16px 0 0 ;
 }
 
 .accordion.accordion--open:after {
@@ -141,12 +154,13 @@ input[type="text"], input[type="number"] {
 
 .panel {
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: #e4e4e4;
     display: none;
     overflow: hidden;
     grid-template-columns: auto 1fr;
     grid-gap: 15px;
     align-items: center;
+    border-radius: 0 0 16px 16px;
 }
 
 .panel.panel--open {
@@ -234,10 +248,12 @@ input[type="text"], input[type="number"] {
     min-height: 30vh;
     justify-content: center;
     font-size: 21px;
+    display: none;
 }
 
 .qr-description__lib-name {
     font-size: 48px;
+    margin-bottom: -16px;
 }
 
 .qr-form {
@@ -265,10 +281,6 @@ input[type="text"], input[type="number"] {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-}
-
-.qr-download-group select {
-    border-left: 1px solid  #000;
 }
 
 .qr-code-container {

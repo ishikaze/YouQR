@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
+:root {
+    --b100: #000000;
+    --b200: #1a1a1a;
+    --b300: #242424;
+    --b400: #313131;
+    --b500: #3b3b3b;
+    --b600: #424242;
+    --b700: #555555;
+    --b800: #696969;
+    --b900: #7e7e7e;
+    --w100: #ffffff;
+}
+
 body {
     margin: 0;
     font-family: Nunito;
@@ -33,7 +46,8 @@ main {
 .button, button {
     padding: 10px;
     transition: background-color 0.2s ease-out;
-    background-color: #d7d7d7;
+    background-color: var(--b700);
+    color: var(--w100);
     border: none;
     color: inherit;
     text-decoration: inherit;
@@ -44,9 +58,28 @@ select, input {
     border-radius: 16px;
 }
 
+input[type="file"]::file-selector-button {
+    display: none;
+}
+
+.image-upload-btn {
+    background-color: var(--b700);
+    padding: 10px;
+    transition: background-color 0.2s ease-out;
+    color: inherit;
+    text-decoration: inherit;
+    border-radius: 16px;
+    margin-right: 8px
+}
+
+.image-upload-btn:hover {
+    background-color: var(--b900);
+    cursor: pointer;
+}
+
 input[type="color"] {
     transition: background-color 0.2s ease-out;
-    background-color: #d7d7d7;
+    background-color: var(--b700);
     border: none;
     padding: 5px;
     height: 30px;
@@ -55,16 +88,19 @@ input[type="color"] {
 select {
     padding: 9px;
     transition: background-color 0.2s ease-out;
-    background-color: #d7d7d7;
+    background-color: var(--b700);
+    color: var(--w100);
     border: none;
 }
 
 select > option {
-    background-color: #f5f5f5;
+    background-color: var(--b500);
+    color: var(--w100);
+    border-radius: 16px;
 }
 
 .button:hover, button:hover, select:hover, input[type="color"]:hover {
-    background-color: #c3c3c3;
+    background-color: var(--b900);
 }
 
 a.white, a.black {
@@ -108,12 +144,25 @@ a.black:active {
 input[type="text"], input[type="number"] {
     border-width: 1px;
     border-style: solid;
-    border-color: rgb(205, 205, 205);
+    border-color: var(--b900);
+    background-color: var(--b700);
+    color: var(--w100);
     padding: 5px;
 }
 
+input[type="number"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+input[type=number] { 
+    -moz-appearance: textfield;
+    appearance: textfield;
+    margin: 0; 
+}
+
 .accordion {
-    background-color: #d7d7d7;
+    background-color: var(--b400);
+    color: var(--w100);
     padding: 10px;
     width: 100%;
     text-align: left;
@@ -149,12 +198,13 @@ input[type="text"], input[type="number"] {
 }
 
 .accordion:hover {
-    background-color: #c3c3c3;
+    background-color: var(--b700);
 }
 
 .panel {
     padding: 20px;
-    background-color: #e4e4e4;
+    background-color: var(--b600);
+    color: var(--w100);
     display: none;
     overflow: hidden;
     grid-template-columns: auto 1fr;
@@ -176,6 +226,7 @@ input[type="text"], input[type="number"] {
 .container > * {
     width: 100%;
     max-width: 1008px;
+    background-color: var(--b300);
 }
 
 .row {

@@ -284,6 +284,30 @@
                             </select>
                         </div>
                     </div>
+                    <button type="button" class="accordion">Presets [TEST]</button>
+                    <div class="panel">
+                        <label>Preset</label>
+                        <div  class="preset-select">
+                            <div onclick="presetDefault()" class="preset-btn">
+                                default
+                            </div>
+                            <div onclick="presetRounded()" class="preset-btn">
+                                rounded
+                            </div>
+                            <div onclick="presetExtraRounded()" class="preset-btn">
+                                extraRounded
+                            </div>
+                            <div onclick="presetCircles()" class="preset-btn">
+                                circles
+                            </div>
+                            <div onclick="presetClassy()" class="preset-btn">
+                                classy
+                            </div>
+                            <div onclick="presetClassyRounded()" class="preset-btn">
+                                classyRounded
+                            </div>
+                        </div>
+                    </div>
                     <div class="options-export-group">
                         <a class="button" id="export-options" style="display: none;">Export Options as JSON</a>
                     </div>
@@ -316,6 +340,8 @@
 <script>
     document.getElementById('button-cancel').click()
 </script>
+
+<script src="presets.js"></script>
 
 <!-- Mirrored from qr-code-styling.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Aug 2024 12:51:41 GMT -->
 </html>

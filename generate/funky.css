@@ -315,7 +315,7 @@ input[type=number] {
 
 .qr-header {
     background-color:  var(--b300);
-    color: #f5f5f5;
+    color: var(--w100);
 }
 
 .qr-footer {

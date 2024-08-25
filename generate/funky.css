@@ -371,5 +371,14 @@ input[type=number] {
     margin-right: 6px;
 }
 
+.options-export-group {
+    display: flex;
+    flex-direction: row;
+}
+
+.options-export-group > * {
+    margin-right: 6px;
+}
+
 
 /*# sourceMappingURL=index.ed65272dbefaaa125154.css.map*/

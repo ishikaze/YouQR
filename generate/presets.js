@@ -82,6 +82,8 @@ document.getElementById('quick-background-color').addEventListener('change', (e)
     let presetValue = e.target.value;
     document.getElementById('form-background-color').value = presetValue
     refresh()
+    document.getElementById('form-background-color-type-gradient').click()
+    document.getElementById('form-background-color-type-single').click()
 })
 
 document.getElementById('presets-select').addEventListener('change', (e) => {
@@ -161,5 +163,6 @@ document.getElementById('presets-select').addEventListener('change', (e) => {
             document.getElementById('form-background-color-type-gradient').click()
             break;
     };
-    
+    document.getElementById('qr-color').value = document.getElementById('form-dots-color').value
+    document.getElementById('quick-background-color').value = document.getElementById('bg-gradient1').value
 })

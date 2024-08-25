@@ -354,7 +354,7 @@ input[type=number] {
     width: 0;
 }
 
-.preset-select {
+.style-select {
     display: flex;
     flex-wrap: wrap;
 }
@@ -365,6 +365,10 @@ input[type=number] {
     padding: 10px;
     margin: 4px;
     cursor: pointer;
+}
+
+.fa-solid {
+    margin-right: 6px;
 }
 
 

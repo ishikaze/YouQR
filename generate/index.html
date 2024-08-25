@@ -8,6 +8,7 @@
     <meta name="keywords" content="qr, qr code, qrcode, style, styling, brand, branding, color, image, create, creating, generate, generator, generating" />
     <link rel="preconnect" href="https://www.google-analytics.com/">
     <link rel="shortcut icon" type="image/x-icon" href="b9eac011a0558695563d6081a8395ccb.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>YouQR</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149838823-1"></script>
     <script>
@@ -37,18 +38,10 @@
         <section class="container">
             <div class="row row--body">
                 <form class="col qr-form" id="form">
-                    <button type="button" class="accordion accordion--open">Main Options</button>
+                    <button type="button" class="accordion accordion--open"><i class="fa-solid fa-message"></i> Main Options</button>
                     <div class="panel panel--open">
                         <label for="form-data">Data</label>
                         <input node="data" node-change-event="oninput" id="form-data" type="text" value="" placeholder="Input Text or URLs here."/>
-                        <label for="form-image-file">Image File</label>
-                        <div class="buttons-container">
-                            <label for="form-image-file" class="image-upload-btn">
-                                Upload Image
-                            </label>
-                            <input node="image" node-data-field="files" id="form-image-file" type="file" />
-                            <button type="button" id="button-cancel">Remove file</button>
-                        </div>
                         <label for="form-width">Width</label>
                         <div>
                             <input node="width" id="form-width" type="number" min="100" max="10000" value="1024"/>
@@ -62,7 +55,100 @@
                             <input node="margin" id="form-margin" type="number" min="0" max="10000" value="64"/>
                         </div>
                     </div>
-                    <button type="button" class="accordion">Dots Options</button>
+
+                    <button type="button" class="accordion"><i class="fa-solid fa-image"></i> Image Options</button>
+                    <div class="panel">
+                        <label for="form-image-file">Image File</label>
+                        <div class="buttons-container">
+                            <label for="form-image-file" class="image-upload-btn">
+                                Upload Image
+                            </label>
+                            <input node="image" node-data-field="files" id="form-image-file" type="file" />
+                            <button type="button" id="button-cancel">Remove file</button>
+                        </div>
+                        <label for="form-hide-background-dots">Hide Background Dots</label>
+                        <div>
+                            <input node="imageOptions.hideBackgroundDots" node-data-field="checked" id="form-hide-background-dots" type="checkbox" checked/>
+                        </div>
+                        <label for="form-image-size">Image Size</label>
+                        <div>
+                            <input node="imageOptions.imageSize" id="form-image-size" type="number" min="0" max="1" step="0.1" value="0.4"/>
+                        </div>
+                        <label for="form-image-margin">Margin</label>
+                        <div>
+                            <input node="imageOptions.margin" id="form-image-margin" type="number" min="0" max="10000" value="0"/>
+                        </div>
+                    </div>
+
+                    <button type="button" class="accordion"><i class="fa-solid fa-paintbrush"></i> Quick Styling</button>
+                    <div class="panel">
+                        <label for="style-select">QR Code Style</label>
+                        <div  class="preset-select">
+                            <select class="style-select" id="style-select">
+                                <option value="default">
+                                    Default
+                                </option>
+                                <option value="rounded">
+                                    Rounded
+                                </option>
+                                <option value="extraRounded">
+                                    Extra Rounded
+                                </option>
+                                <option value="circles">
+                                    Circles
+                                </option>
+                                <option value="classy">
+                                    Classy
+                                </option>
+                                <option value="classyRounded">
+                                    Classy Rounded
+                                </option>
+                            </select>
+                        </div>
+                        <label for="qr-color">QR Code Color</label>
+                        <div>
+                            <input id="qr-color" type="color" value="#000000"/>
+                        </div>
+                        <label for="quick-background-color">Background Color</label>
+                        <div>
+                            <input id="quick-background-color" type="color" value="#ffffff"/>
+                        </div>
+                        <label for="presets-select">Presets</label>
+                        <div  class="preset-select">
+                            <select class="presets-select" id="presets-select">
+                                <optgroup label="Presets">
+                                    <option value="default">
+                                        Default
+                                    </option>
+                                    <option value="default-invert">
+                                        Inverted
+                                    </option>
+                                    <option value="firery">
+                                        Firery
+                                    </option>
+                                    <option value="purple">
+                                        Purple
+                                    </option>
+                                    <option value="sunset">
+                                        Sunset
+                                    </option>
+                                    <option value="lemon">
+                                        Lemon
+                                    </option>
+                                    <option value="peach">
+                                        Peach
+                                    </option>
+                                </optgroup>
+                                <optgroup label="Comminity Presets">
+                                    <option>
+                                        Coming Soon!
+                                    </option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="button" class="accordion"><i class="fa-solid fa-gears"></i> Advanced Styling Options</button>
                     <div class="panel">
                         <label for="form-dots-type">Dots Style</label>
                         <div>
@@ -110,9 +196,6 @@
                         <div class="dotsOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
                             <input node="dotsOptionsHelper.gradient.rotation" id="form-dots-gradient-rotation" type="number" min="0" max="360" value="0"/>
                         </div>
-                    </div>
-                    <button type="button" class="accordion">Corners Square Options</button>
-                    <div class="panel">
                         <label for="form-corners-square-type">Corners Square Style</label>
                         <div>
                             <select node="cornersSquareOptions.type" id="form-corners-square-type">
@@ -158,9 +241,6 @@
                         <div class="cornersSquareOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
                             <input node="cornersSquareOptionsHelper.gradient.rotation" id="form-corners-square-gradient-rotation" type="number" min="0" max="360" value="0"/>
                         </div>
-                    </div>
-                    <button type="button" class="accordion">Corners Dot Options</button>
-                    <div class="panel">
                         <label for="form-corners-dot-type">Corners Dot Style</label>
                         <div>
                             <select node="cornersDotOptions.type" id="form-corners-dot-type">
@@ -205,9 +285,10 @@
                         <div class="cornersDotOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
                             <input node="cornersDotOptionsHelper.gradient.rotation" id="form-corners-dot-gradient-rotation" type="number" min="0" max="360" value="0"/>
                         </div>
-                    </div>
-                    <button type="button" class="accordion">Background Options</button>
-                    <div class="panel">
+                        <label class="backgroundOptionsHelper.colorType.single" for="form-background-color">Background Color</label>
+                        <div class="backgroundOptionsHelper.colorType.single">
+                            <input node="backgroundOptions.color" id="form-background-color" type="color" value="#ffffff"/>
+                        </div>
                         <label>Color Type</label>
                         <div class="space-between-container">
                             <div style="flex-grow: 1">
@@ -219,10 +300,7 @@
                                 <label for="form-background-color-type-gradient">Color gradient</label>
                             </div>
                         </div>
-                        <label class="backgroundOptionsHelper.colorType.single" for="form-background-color">Background Color</label>
-                        <div class="backgroundOptionsHelper.colorType.single">
-                            <input node="backgroundOptions.color" id="form-background-color" type="color" value="#ffffff"/>
-                        </div>
+                        
                         <label class="backgroundOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">Gradient Type</label>
                         <div class="backgroundOptionsHelper.colorType.gradient space-between-container" style="visibility: hidden; height: 0">
                             <div style="flex-grow: 1">
@@ -236,32 +314,18 @@
                         </div>
                         <label class="backgroundOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">Background Gradient</label>
                         <div class="backgroundOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
-                            <input node="backgroundOptionsHelper.gradient.color1" type="color" value="#ffffff"/>
-                            <input node="backgroundOptionsHelper.gradient.color2" type="color" value="#ffffff"/>
+                            <input id="bg-gradient1" node="backgroundOptionsHelper.gradient.color1" type="color" value="#ffffff"/>
+                            <input id="bg-gradient2" node="backgroundOptionsHelper.gradient.color2" type="color" value="#ffffff"/>
                         </div>
                         <label class="backgroundOptionsHelper.colorType.gradient" for="form-background-gradient-rotation" style="visibility: hidden; height: 0">Rotation</label>
                         <div class="backgroundOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
                             <input node="backgroundOptionsHelper.gradient.rotation" id="form-background-gradient-rotation" type="number" min="0" max="360" value="0"/>
                         </div>
                     </div>
-                    <button type="button" class="accordion">Image Options</button>
+            
+                    <button type="button" class="accordion"><i class="fa-solid fa-qrcode"></i> QR Options</button>
                     <div class="panel">
-                        <label for="form-hide-background-dots">Hide Background Dots</label>
-                        <div>
-                            <input node="imageOptions.hideBackgroundDots" node-data-field="checked" id="form-hide-background-dots" type="checkbox" checked/>
-                        </div>
-                        <label for="form-image-size">Image Size</label>
-                        <div>
-                            <input node="imageOptions.imageSize" id="form-image-size" type="number" min="0" max="1" step="0.1" value="0.4"/>
-                        </div>
-                        <label for="form-image-margin">Margin</label>
-                        <div>
-                            <input node="imageOptions.margin" id="form-image-margin" type="number" min="0" max="10000" value="0"/>
-                        </div>
-                    </div>
-                    <button type="button" class="accordion">QR Options</button>
-                    <div class="panel">
-                        <label for="form-qr-type-number">Type Number</label>
+                        <label for="form-qr-type-number">Type Number (max 40)</label>
                         <div>
                             <input node="qrOptions.typeNumber" id="form-qr-type-number" type="number" min="0" max="40" value="0"/>
                         </div>
@@ -277,37 +341,14 @@
                         <label for="form-qr-error-correction-level">Error Correction Level</label>
                         <div>
                             <select node="qrOptions.errorCorrectionLevel" id="form-qr-error-correction-level">
-                                <option value="L">L</option>
-                                <option value="M">M</option>
-                                <option value="Q" selected>Q</option>
-                                <option value="H">H</option>
+                                <option value="L">Low</option>
+                                <option value="M">Medium</option>
+                                <option value="Q" selected>Quick</option>
+                                <option value="H">High</option>
                             </select>
                         </div>
                     </div>
-                    <button type="button" class="accordion">Presets [TEST]</button>
-                    <div class="panel">
-                        <label>Preset</label>
-                        <div  class="preset-select">
-                            <div onclick="presetDefault()" class="preset-btn">
-                                default
-                            </div>
-                            <div onclick="presetRounded()" class="preset-btn">
-                                rounded
-                            </div>
-                            <div onclick="presetExtraRounded()" class="preset-btn">
-                                extraRounded
-                            </div>
-                            <div onclick="presetCircles()" class="preset-btn">
-                                circles
-                            </div>
-                            <div onclick="presetClassy()" class="preset-btn">
-                                classy
-                            </div>
-                            <div onclick="presetClassyRounded()" class="preset-btn">
-                                classyRounded
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="options-export-group">
                         <a class="button" id="export-options" style="display: none;">Export Options as JSON</a>
                     </div>
@@ -320,7 +361,7 @@
                             <option value="png" selected>PNG</option>
                             <option value="jpeg">JPEG</option>
                         </select>
-                        <button id="qr-download" style="color: var(--w100);">Download</button>
+                        <button id="qr-download" style="color: var(--w100);"><i class="fa-solid fa-download"></i> Download</button>
                     </div>
                 </div>
             </div>

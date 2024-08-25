@@ -374,6 +374,8 @@ input[type=number] {
 .options-export-group {
     display: flex;
     flex-direction: row;
+    width: auto;
+    background-color: #000000;
 }
 
 .options-export-group > * {

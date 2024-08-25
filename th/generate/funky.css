@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap');
+
+:root {
+    --b100: #000000;
+    --b200: #1a1a1a;
+    --b300: #242424;
+    --b400: #313131;
+    --b500: #3b3b3b;
+    --b600: #424242;
+    --b700: #555555;
+    --b800: #696969;
+    --b900: #7e7e7e;
+    --w100: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Nunito', 'Noto Sans Thai';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--b300);
+}
+
+main {
+    flex-grow: 1;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.button, button, input, select {
+    font: inherit;
+}
+
+.button, button, select, input[type="color"], input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.button, button {
+    padding: 10px;
+    transition: background-color 0.2s ease-out;
+    background-color: var(--b700);
+    color: var(--w100);
+    border: none;
+    color: inherit;
+    text-decoration: inherit;
+    border-radius: 16px;
+}
+
+select, input {
+    border-radius: 16px;
+}
+
+input[type="file"]::file-selector-button {
+    display: none;
+}
+
+.image-upload-btn {
+    background-color: var(--b700);
+    padding: 10px;
+    transition: background-color 0.2s ease-out;
+    color: inherit;
+    text-decoration: inherit;
+    border-radius: 16px;
+    margin-right: 8px
+}
+
+.image-upload-btn:hover {
+    background-color: var(--b900);
+    cursor: pointer;
+}
+
+input[type="color"] {
+    transition: background-color 0.2s ease-out;
+    background-color: var(--b700);
+    border: none;
+    padding: 5px;
+    height: 30px;
+}
+
+select {
+    padding: 9px;
+    transition: background-color 0.2s ease-out;
+    background-color: var(--b700);
+    color: var(--w100);
+    border: none;
+}
+
+select > option {
+    background-color: var(--b500);
+    color: var(--w100);
+    border-radius: 16px;
+}
+
+.button:hover, button:hover, select:hover, input[type="color"]:hover {
+    background-color: var(--b900);
+}
+
+a.white, a.black {
+    transition: color 0.4s;
+}
+
+a.white:link {
+    color: #f5f5f5;
+    text-decoration: none;
+}
+
+a.white:visited {
+    color: #f5f5f5;
+}
+
+a.white:hover {
+    color: #cdcdcd;
+}
+
+a.white:active {
+    color: #9b9b9b;
+}
+
+a.black:link {
+    color: #000000;
+    text-decoration: none;
+}
+
+a.black:visited {
+    color: #000000;
+}
+
+a.black:hover {
+    color: #7a7a7a;
+}
+
+a.black:active {
+    color: #afafaf;
+}
+
+input[type="text"], input[type="number"] {
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--b900);
+    background-color: var(--b700);
+    color: var(--w100);
+    padding: 5px;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    display: none;
+}
+
+input[type=number] { 
+    -moz-appearance: textfield;
+    appearance: textfield;
+    margin: 0; 
+}
+
+.accordion {
+    background-color: var(--b400);
+    color: var(--w100);
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: background-color 0.4s;
+    border-radius: 16px;
+    margin: 8px 0 0 0;
+}
+
+.accordion.active {
+    border-radius: 16px 16px 0 0 ;
+}
+
+.accordion:after {
+    content: '\002B';
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.accordion.active:after {
+    content: "\2212";
+}
+
+.accordion.accordion--open {
+    cursor: auto;
+    border-radius: 16px 16px 0 0 ;
+}
+
+.accordion.accordion--open:after {
+    content: none;
+}
+
+.accordion:hover {
+    background-color: var(--b700);
+}
+
+.panel {
+    padding: 20px;
+    background-color: var(--b600);
+    color: var(--w100);
+    display: none;
+    overflow: hidden;
+    grid-template-columns: auto 1fr;
+    grid-gap: 15px;
+    align-items: center;
+    border-radius: 0 0 16px 16px;
+}
+
+.panel.panel--open {
+    display: grid;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container > * {
+    width: 100%;
+    max-width: 1008px;
+    background-color: var(--b300);
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.row--qr-header {
+    align-items: center;
+}
+
+.row--body {
+    align-items: start;
+}
+
+.col {
+    padding: 20px;
+}
+
+.buttons-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.buttons-container button {
+    margin-left: 10px;
+}
+
+.buttons-container button:first-of-type {
+    margin-left: auto;
+}
+
+.space-between-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.buttons-container button {
+    margin-left: 10px;
+}
+
+.buttons-container button:first-of-type {
+    margin-left: auto;
+}
+
+#form-image-file {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 150px;
+}
+
+.qr-logo {
+    flex-grow: 1;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.qr-logo__img {
+    height: 50px;
+}
+
+.qr-description {
+    color: #fff;
+    min-height: 30vh;
+    justify-content: center;
+    font-size: 21px;
+    display: none;
+}
+
+.qr-description__lib-name {
+    font-size: 48px;
+    margin-bottom: -16px;
+}
+
+.qr-form {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.qr-header {
+    background-color:  var(--b300);
+    color: var(--w100);
+}
+
+.qr-footer {
+    background-color:  var(--b300);
+    color: #f5f5f5;
+}
+
+.qr-code canvas {
+    max-width: 300px!important;
+    width: 100%;
+}
+
+.qr-download-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.qr-code-container {
+    max-width: 100%;
+    position: sticky;
+    top: 5px;
+}
+
+.options-export-group {
+    margin-top: 20px;
+}
+
+#form-data {
+    width: 100%;
+}
+
+.hide {
+    /*visibility: hidden;*/
+    height: 0;
+    width: 0;
+}
+
+.style-select {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.preset-btn {
+    background-color: var(--b700);
+    border-radius: 16px;
+    padding: 10px;
+    margin: 4px;
+    cursor: pointer;
+}
+
+.fa-solid {
+    margin-right: 6px;
+}
+
+.options-export-group {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    background-color: #000000;
+}
+
+.options-export-group > * {
+    margin-right: 6px;
+}
+
+
+/*# sourceMappingURL=index.ed65272dbefaaa125154.css.map*/

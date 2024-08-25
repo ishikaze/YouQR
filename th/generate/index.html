@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Use YouQR to generate your branded QR code for free. Pick one of our presets or customize your QR code to your liking." />
+    <meta name="keywords" content="qr, qr code, qrcode, style, styling, brand, branding, color, image, create, creating, generate, generator, generating, YouQR, you" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>YouQR</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149838823-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-149838823-1');
+    </script>
+<link href="funky.css" rel="stylesheet"></head>
+<body>
+    <header class="container qr-header">
+        <div class="row row--qr-header">
+            <div class="col qr-logo">
+                <h1>YouQR BETA</h1>
+            </div>
+            <a rel="noopener" class="col white" href="../">หน้าหลัก</a>
+        </div>
+    </header>
+    <main>
+        <section class="container qr-description" id="qr-description">
+            <div class="col">
+                <h1 class="qr-description__lib-name">Welcome to YouQR</h1>
+                <p>Generate your QR code below.</p>
+            </div>
+        </section>
+        <section class="container">
+            <div class="row row--body">
+                <form class="col qr-form" id="form">
+                    <button type="button" class="accordion accordion--open"><i class="fa-solid fa-message"></i> ตัวเลือกหลัก</button>
+                    <div class="panel panel--open">
+                        <label for="form-data">ข้อมูล</label>
+                        <input node="data" node-change-event="oninput" id="form-data" type="text" value="" placeholder="Input Text or URLs here."/>
+                        <label for="form-width">ความยาว</label>
+                        <div>
+                            <input node="width" id="form-width" type="number" min="100" max="10000" value="1024"/>
+                        </div>
+                        <label for="form-height">ความสูง</label>
+                        <div>
+                            <input node="height" id="form-height" type="number" min="100" max="10000" value="1024"/>
+                        </div>
+                        <label for="form-height">ขอบ</label>
+                        <div>
+                            <input node="margin" id="form-margin" type="number" min="0" max="10000" value="64"/>
+                        </div>
+                    </div>
+
+                    <button type="button" class="accordion"><i class="fa-solid fa-image"></i> ตัวเลือกรูปภาพ</button>
+                    <div class="panel">
+                        <label for="form-image-file">ไฟล์รูป</label>
+                        <div class="buttons-container">
+                            <label for="form-image-file" class="image-upload-btn">
+                                อัพโหลดรูป
+                            </label>
+                            <input node="image" node-data-field="files" id="form-image-file" type="file" accept="image/*"/>
+                            <button type="button" id="button-cancel">ลบไฟล์</button>
+                        </div>
+                        <label for="form-hide-background-dots">ซ่อนจุดหลังรูป</label>
+                        <div>
+                            <input node="imageOptions.hideBackgroundDots" node-data-field="checked" id="form-hide-background-dots" type="checkbox" checked/>
+                        </div>
+                        <label for="form-image-size">ขนาดรูป</label>
+                        <div>
+                            <input node="imageOptions.imageSize" id="form-image-size" type="number" min="0" max="1" step="0.1" value="0.4"/>
+                        </div>
+                        <label for="form-image-margin">ขอบรูป</label>
+                        <div>
+                            <input node="imageOptions.margin" id="form-image-margin" type="number" min="0" max="10000" value="0"/>
+                        </div>
+                    </div>
+
+                    <button type="button" class="accordion"><i class="fa-solid fa-paintbrush"></i> ตกแต่งแบบง่าย</button>
+                    <div class="panel">
+                        <label for="style-select">รูปแบบ QR Code</label>
+                        <div  class="preset-select">
+                            <select class="style-select" id="style-select">
+                                <option value="default">
+                                    ธรรมดา
+                                </option>
+                                <option value="rounded">
+                                    กลม
+                                </option>
+                                <option value="extraRounded">
+                                    กลมมาก
+                                </option>
+                                <option value="circles">
+                                    วงกลม
+                                </option>
+                                <option value="classy">
+                                    2 เหลี่ยม
+                                </option>
+                                <option value="classyRounded">
+                                    2 เหลี่ยมกลม
+                                </option>
+                            </select>
+                        </div>
+                        <label for="qr-color">สี QR Code</label>
+                        <div>
+                            <input id="qr-color" type="color" value="#000000"/>
+                        </div>
+                        <label for="quick-background-color">สีพื้นหลัง</label>
+                        <div>
+                            <input id="quick-background-color" type="color" value="#ffffff"/>
+                        </div>
+                        <label for="presets-select">แม่แบบ</label>
+                        <div  class="preset-select">
+                            <select class="presets-select" id="presets-select">
+                                <optgroup label="แม่แบบ">
+                                    <option value="default">
+                                        ธรรมดา
+                                    </option>
+                                    <option value="default-invert">
+                                        กลับสี
+                                    </option>
+                                    <option value="firery">
+                                        ร้อนแรง
+                                    </option>
+                                    <option value="purple">
+                                        ม่วง
+                                    </option>
+                                    <option value="sunset">
+                                        อาทิตย์ตก
+                                    </option>
+                                    <option value="lemon">
+                                        เลม่อน
+                                    </option>
+                                    <option value="peach">
+                                        พีช
+                                    </option>
+                                </optgroup>
+                                <optgroup label="แม่แบบคอมมูนิตี้">
+                                    <option>
+                                        เร็วๆนี้
+                                    </option>
+                                </optgroup>
+                            </select>
+                        </div>
+                            <a class="button" id="export-options" style="text-wrap: nowrap; width: 110px;">Export Style</a>
+                            <a class="button" id="import-options" style="text-wrap: nowrap; opacity: 0.5; width: 160px;">Import Style (soon)</a>
+                        
+                    </div>
+
+                    <button type="button" class="accordion"><i class="fa-solid fa-gears"></i> ตกแต่งขั้นสูง</button>
+                    <div class="panel">
+                        <label for="form-dots-type">รูปแบบจุด</label>
+                        <div>
+                            <select node="dotsOptions.type" id="form-dots-type">
+                                <option value="square" selected>เหลี่ยม</option>
+                                <option value="dots">จุด</option>
+                                <option value="rounded">กลม</option>
+                                <option value="extra-rounded">กลมมาก</option>
+                                <option value="classy">2 เหลี่ยม</option>
+                                <option value="classy-rounded">2 เหลี่ยมกลม</option>
+                            </select>
+                        </div>
+                        <label>รูปแบบสี</label>
+                        <div class="space-between-container">
+                            <div style="flex-grow: 1">
+                                <input node-data-field="checked" node="dotsOptionsHelper.colorType.single" id="form-dots-color-type-single" type="radio" name="dots-color-type" checked/>
+                                <label for="form-dots-color-type-single">สีเดียว</label>
+                            </div>
+                            <div style="flex-grow: 1">
+                                <input node-data-field="checked" node="dotsOptionsHelper.colorType.gradient" id="form-dots-color-type-gradient" type="radio" name="dots-color-type"/>
+                                <label for="form-dots-color-type-gradient">ไล่สี</label>
+                            </div>
+                        </div>
+                        <label class="dotsOptionsHelper.colorType.single" for="form-dots-color">สีจุด</label>
+                        <div class="dotsOptionsHelper.colorType.single">
+                            <input node="dotsOptions.color" id="form-dots-color" type="color" value="#000000"/>
+                        </div>
+                        <label class="dotsOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">รูปแบบการไล่สี</label>
+                        <div class="dotsOptionsHelper.colorType.gradient space-between-container" style="visibility: hidden; height: 0">
+                            <div style="flex-grow: 1">
+                                <input node-data-field="checked" node="dotsOptionsHelper.gradient.linear" id="form-dots-gradient-type-linear" type="radio" name="dots-gradient-type" checked/>
+                                <label for="form-dots-gradient-type-linear">ตรง</label>
+                            </div>
+                            <div style="flex-grow: 1">
+                                <input node-data-field="checked" node="dotsOptionsHelper.gradient.radial" id="form-dots-gradient-type-radial" type="radio" name="dots-gradient-type"/>
+                                <label for="form-dots-gradient-type-radial">รัศมี</label>
+                            </div>
+                        </div>
+                        <label class="dotsOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">การไล่สีจุด</label>
+                        <div class="dotsOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
+                            <input node="dotsOptionsHelper.gradient.color1" type="color" value="#6a1a4c"/>
+                            <input node="dotsOptionsHelper.gradient.color2" type="color" value="#6a1a4c"/>
+                        </div>
+                        <label class="dotsOptionsHelper.colorType.gradient" for="form-dots-gradient-rotation" style="visibility: hidden; height: 0">หมุน</label>
+                        <div class="dotsOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
+                            <input node="dotsOptionsHelper.gradient.rotation" id="form-dots-gradient-rotation" type="number" min="0" max="360" value="0"/>
+                        </div>
+                        <label for="form-corners-square-type">รูปแบบสีเหลี่ยมมุม</label>
+                        <div>
+                            <select node="cornersSquareOptions.type" id="form-corners-square-type">
+                                <option value="">ไม่มี</option>
+                                <option value="square" selected>เหลี่ยม</option>
+                                <option value="dot">จุด</option>
+                                <option value="extra-rounded">กลมมาก</option>
+                            </select>
+                        </div>
+                        <label>รูปแบบสี</label>
+                        <div class="space-between-container">
+                            <div style="flex-grow: 1">
+                                <input node-data-field="checked" node="cornersSquareOptionsHelper.colorType.single" id="form-corners-square-color-type-single" type="radio" name="corners-square-color-type" checked/>
+                                <label for="form-corners-square-color-type-single">สีเดียว</label>
+                            </div>
+                            <div style="flex-grow: 1">
+                                <input node-data-field="checked" node="cornersSquareOptionsHelper.colorType.gradient" id="form-corners-square-color-type-gradient" type="radio" name="corners-square-color-type"/>
+                                <label for="form-corners-square-color-type-gradient">ไล่สี</label>
+                            </div>
+                        </div>
+                        <label class="cornersSquareOptionsHelper.colorType.single" for="form-corners-square-color">สีสี่เหลี่ยมมุม</label>
+                        <div class="cornersSquareOptionsHelper.colorType.single buttons-container">
+                            <input node="cornersSquareOptions.color" id="form-corners-square-color" type="color" value="#000000"/>
+                            <button type="button" id="button-clear-corners-square-color">ลบ</button>
+                        </div>
+                        <label class="cornersSquareOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">รูปแบบการไล่สี</label>
+                        <div class="cornersSquareOptionsHelper.colorType.gradient space-between-container" style="visibility: hidden; height: 0">
+                            <div style="flex-grow: 1">
+                                <input node-data-field="checked" node="cornersSquareOptionsHelper.gradient.linear" id="form-corners-square-gradient-type-linear" type="radio" name="corners-square-gradient-type" checked/>
+                                <label for="form-corners-square-gradient-type-linear">ตรง</label>
+                            </div>
+                            <div style="flex-grow: 1">
+                                <input node-data-field="checked" node="cornersSquareOptionsHelper.gradient.radial" id="form-corners-square-gradient-type-radial" type="radio" name="corners-square-gradient-type"/>
+                                <label for="form-corners-square-gradient-type-radial">รัศมี</label>
+                            </div>
+                        </div>
+                        <label class="cornersSquareOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">การไล่สีจุด</label>
+                        <div class="cornersSquareOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
+                            <input node="cornersSquareOptionsHelper.gradient.color1" type="color" value="#000000"/>
+                            <input node="cornersSquareOptionsHelper.gradient.color2" type="color" value="#000000"/>
+                        </div>
+                        <label class="cornersSquareOptionsHelper.colorType.gradient" for="form-corners-square-gradient-rotation" style="visibility: hidden; height: 0">หมุน</label>
+                        <div class="cornersSquareOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
+                            <input node="cornersSquareOptionsHelper.gradient.rotation" id="form-corners-square-gradient-rotation" type="number" min="0" max="360" value="0"/>
+                        </div>
+                        <label for="form-corners-dot-type">รูปแบบจุดมุม</label>
+                        <div>
+                            <select node="cornersDotOptions.type" id="form-corners-dot-type">
+                                <option value="">ไม่มี</option>
+                                <option value="square" selected>เหลี่ยม</option>
+                                <option value="dot">จุด</option>
+                            </select>
+                        </div>
+                        <label>รูปแบบสี</label>
+                        <div class="space-between-container">
+                            <div style="flex-grow: 1">
+                                <input node-data-field="checked" node="cornersDotOptionsHelper.colorType.single" id="form-corners-dot-color-type-single" type="radio" name="corners-dot-color-type" checked/>
+                                <label for="form-corners-dot-color-type-single">สีเดียว</label>
+                            </div>
+                            <div style="flex-grow: 1">
+                                <input node-data-field="checked" node="cornersDotOptionsHelper.colorType.gradient" id="form-corners-dot-color-type-gradient" type="radio" name="corners-dot-color-type"/>
+                                <label for="form-corners-dot-color-type-gradient">ไล่สี</label>
+                            </div>
+                        </div>
+                        <label class="cornersDotOptionsHelper.colorType.single" for="form-corners-dot-color">สีจุดมุม</label>
+                        <div class="cornersDotOptionsHelper.colorType.single buttons-container">
+                            <input node="cornersDotOptions.color" id="form-corners-dot-color" type="color" value="#000000"/>
+                            <button type="button" id="button-clear-corners-dot-color">ลบ</button>
+                        </div>
+                        <label class="cornersDotOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">รูปแบบการไล่สี</label>
+                        <div class="cornersDotOptionsHelper.colorType.gradient space-between-container" style="visibility: hidden; height: 0">
+                            <div style="flex-grow: 1">
+                                <input node-data-field="checked" node="cornersDotOptionsHelper.gradient.linear" id="form-corners-dot-gradient-type-linear" type="radio" name="corners-dot-gradient-type" checked/>
+                                <label for="form-corners-dot-gradient-type-linear">ตรง</label>
+                            </div>
+                            <div style="flex-grow: 1">
+                                <input node-data-field="checked" node="cornersDotOptionsHelper.gradient.radial" id="form-corners-dot-gradient-type-radial" type="radio" name="corners-dot-gradient-type"/>
+                                <label for="form-corners-dot-gradient-type-radial">รัศมี</label>
+                            </div>
+                        </div>
+                        <label class="cornersDotOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">การไล่สีจุด</label>
+                        <div class="cornersDotOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
+                            <input node="cornersDotOptionsHelper.gradient.color1" type="color" value="#000000"/>
+                            <input node="cornersDotOptionsHelper.gradient.color2" type="color" value="#000000"/>
+                        </div>
+                        <label class="cornersDotOptionsHelper.colorType.gradient" for="form-corners-dot-gradient-rotation" style="visibility: hidden; height: 0">หมุน</label>
+                        <div class="cornersDotOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
+                            <input node="cornersDotOptionsHelper.gradient.rotation" id="form-corners-dot-gradient-rotation" type="number" min="0" max="360" value="0"/>
+                        </div>
+                        <label class="backgroundOptionsHelper.colorType.single" for="form-background-color">สีพื้นหลัง</label>
+                        <div class="backgroundOptionsHelper.colorType.single">
+                            <input node="backgroundOptions.color" id="form-background-color" type="color" value="#ffffff"/>
+                        </div>
+                        <label>รูปแบบสี</label>
+                        <div class="space-between-container">
+                            <div style="flex-grow: 1">
+                                <input node-data-field="checked" node="backgroundOptionsHelper.colorType.single" id="form-background-color-type-single" type="radio" name="background-color-type" checked/>
+                                <label for="form-background-color-type-single">สีเดียว</label>
+                            </div>
+                            <div style="flex-grow: 1">
+                                <input node-data-field="checked" node="backgroundOptionsHelper.colorType.gradient" id="form-background-color-type-gradient" type="radio" name="background-color-type"/>
+                                <label for="form-background-color-type-gradient">ไล่สี</label>
+                            </div>
+                        </div>
+                        
+                        <label class="backgroundOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">รูปแบบการไล่สี</label>
+                        <div class="backgroundOptionsHelper.colorType.gradient space-between-container" style="visibility: hidden; height: 0">
+                            <div style="flex-grow: 1">
+                                <input node-data-field="checked" node="backgroundOptionsHelper.gradient.linear" id="form-background-gradient-type-linear" type="radio" name="background-gradient-type" checked/>
+                                <label for="form-background-gradient-type-linear">ตรง</label>
+                            </div>
+                            <div style="flex-grow: 1">
+                                <input node-data-field="checked" node="backgroundOptionsHelper.gradient.radial" id="form-background-gradient-type-radial" type="radio" name="background-gradient-type"/>
+                                <label for="form-background-gradient-type-radial">รัศมี</label>
+                            </div>
+                        </div>
+                        <label class="backgroundOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">การไล่สีพื้นหลัง</label>
+                        <div class="backgroundOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
+                            <input id="bg-gradient1" node="backgroundOptionsHelper.gradient.color1" type="color" value="#ffffff"/>
+                            <input id="bg-gradient2" node="backgroundOptionsHelper.gradient.color2" type="color" value="#ffffff"/>
+                        </div>
+                        <label class="backgroundOptionsHelper.colorType.gradient" for="form-background-gradient-rotation" style="visibility: hidden; height: 0">หมุน</label>
+                        <div class="backgroundOptionsHelper.colorType.gradient" style="visibility: hidden; height: 0">
+                            <input node="backgroundOptionsHelper.gradient.rotation" id="form-background-gradient-rotation" type="number" min="0" max="360" value="0"/>
+                        </div>
+                    </div>
+            
+                    <button type="button" class="accordion"><i class="fa-solid fa-qrcode"></i> ตัวเลือก QR</button>
+                    <div class="panel">
+                        <label for="form-qr-type-number">หมายเลขชนิด (สูงสุด 40)</label>
+                        <div>
+                            <input node="qrOptions.typeNumber" id="form-qr-type-number" type="number" min="0" max="40" value="0"/>
+                        </div>
+                        <label for="form-qr-mode">โหมด</label>
+                        <div>
+                            <select node="qrOptions.mode" id="form-qr-mode">
+                                <option value="Numeric">เลข</option>
+                                <option value="Alphanumeric">ตัวอักษรและเลข</option>
+                                <option value="Byte" selected>ไบท์</option>
+                                <option value="Kanji">ตัวคันจิ</option>
+                            </select>
+                        </div>
+                        <label for="form-qr-error-correction-level">ระดับการแก้ไขข้อผิดพลาด</label>
+                        <div>
+                            <select node="qrOptions.errorCorrectionLevel" id="form-qr-error-correction-level">
+                                <option value="L">ต่ำ</option>
+                                <option value="M">ปานกลาง</option>
+                                <option value="Q" selected>รวดเร็ว</option>
+                                <option value="H">สูง</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                </form>
+                <div class="col qr-code-container">
+                    <div class="qr-code" id="qr-code-generated"></div>
+                    <div class="qr-download-group">
+                        <label class="hide" for="qr-extension"></label>
+                        <select id="qr-extension" style="margin-right: 8px;">
+                            <option value="png" selected>PNG</option>
+                            <option value="jpeg">JPEG</option>
+                        </select>
+                        <button id="qr-download" style="color: var(--w100);"><i class="fa-solid fa-download"></i> ดาวน์โหลด</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="container qr-footer">
+        <div class="col">
+            
+        </div>
+    </footer>
+<script type="text/javascript" src="codeALT.js"></script></body>
+<script>
+    document.getElementById('button-cancel').click()
+</script>
+
+<script src="presets.js"></script>
+
+<!-- Mirrored from qr-code-styling.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Aug 2024 12:51:41 GMT -->
+</html>

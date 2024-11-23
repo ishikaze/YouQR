@@ -1,1 +1,1 @@
-YouQR is a QR code generator I wrote
+YouQR is a QR code generator written in JavaScript
